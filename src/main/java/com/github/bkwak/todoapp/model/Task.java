@@ -1,7 +1,5 @@
 package com.github.bkwak.todoapp.model;
 
-//import javax.persistence.*;
-//import javax.validation.constraints.NotBlank;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -14,20 +12,21 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank(message = "Task's description must not be empty")
-    @Column(name="desc")
+    @Column(name="description")
     private String description;
     private boolean done;
     @Column
     private LocalDateTime deadline;
+    @Embedded
+    private Audit audit = new Audit();
+    @ManyToOne
+    @JoinColumn(name = "task_group_id")
+    private TaskGroup group;
     public Task() {
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getDescription() {
@@ -44,5 +43,29 @@ public class Task {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public LocalDateTime getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDateTime deadline) {
+        this.deadline = deadline;
+    }
+
+    TaskGroup getGroup() {
+        return group;
+    }
+
+    public void setGroup(TaskGroup group) {
+        this.group = group;
+    }
+
+
+    public void updateFrom(final Task source){
+        description = source.description;
+        done = source.done;
+        deadline = source.deadline;
+        group = source.group;
     }
 }

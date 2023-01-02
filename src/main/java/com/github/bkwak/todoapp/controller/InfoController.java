@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class InfoController {
     @Autowired
     private DataSourceProperties dataSource;
-    @Value("${task.allowMultipleTasksFromTemplate}")
     private TaskConfigurationProperties myProp;
 
     public InfoController(DataSourceProperties dataSource, TaskConfigurationProperties myProp) {
