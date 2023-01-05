@@ -2,6 +2,7 @@ package com.github.bkwak.todoapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +16,6 @@ public class Task {
     @Column(name="description")
     private String description;
     private boolean done;
-    @Column
     private LocalDateTime deadline;
     @Embedded
     private Audit audit = new Audit();
@@ -23,6 +23,11 @@ public class Task {
     @JoinColumn(name = "task_group_id")
     private TaskGroup group;
     public Task() {
+    }
+
+    public Task(String description, LocalDateTime deadline){
+        this.description = description;
+        this.deadline = deadline;
     }
 
     public int getId() {

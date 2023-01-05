@@ -1,4 +1,4 @@
-package com.github.bkwak.todoapp.controller.adapter;
+package com.github.bkwak.todoapp.adapter;
 
 import com.github.bkwak.todoapp.model.Task;
 import com.github.bkwak.todoapp.model.TaskRepository;

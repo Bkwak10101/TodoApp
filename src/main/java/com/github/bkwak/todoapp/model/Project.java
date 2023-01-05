@@ -31,7 +31,7 @@ public class Project {
         return description;
     }
 
-     void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
@@ -41,5 +41,13 @@ public class Project {
 
     void setGroups(Set<TaskGroup> groups) {
         this.groups = groups;
+    }
+
+    public Set<ProjectStep> getSteps(){
+        return steps;
+    }
+
+    void setSteps(final Set<ProjectStep> steps){
+        this.steps = steps;
     }
 }
