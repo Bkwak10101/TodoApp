@@ -1,13 +1,10 @@
 package com.github.bkwak.todoapp.logic;
 
-import com.github.bkwak.todoapp.TaskConfigurationProperties;
 import com.github.bkwak.todoapp.model.TaskGroup;
 import com.github.bkwak.todoapp.model.TaskGroupRepository;
 import com.github.bkwak.todoapp.model.TaskRepository;
 import com.github.bkwak.todoapp.model.projection.GroupReadModel;
 import com.github.bkwak.todoapp.model.projection.GroupWriteModel;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -42,7 +39,6 @@ public class TaskGroupService {
         TaskGroup result = repository.findById(groupId)
                 .orElseThrow(() -> new IllegalArgumentException("Task group with given id not found"));
         result.setDone(!result.isDone());
+        repository.save(result);
     }
-
-
 }

@@ -9,7 +9,7 @@ import java.util.Set;
 @Table(name = "projects")
 public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotBlank(message = "Project's description must not be empty")
     @Column(name="description")
@@ -18,6 +18,9 @@ public class Project {
     private Set<TaskGroup> groups;
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "project")
     private Set<ProjectStep> steps;
+
+    public Project() {
+    }
 
     public int getId() {
         return id;

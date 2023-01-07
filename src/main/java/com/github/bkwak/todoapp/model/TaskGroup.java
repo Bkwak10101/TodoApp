@@ -18,13 +18,12 @@ public class TaskGroup {
     @Column(name="description")
     private String description;
     private boolean done;
-//    @Embedded
-//    private Audit audit = new Audit();
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "group")
     private Set<Task> tasks;
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
+
     public TaskGroup() {
     }
 
@@ -32,7 +31,7 @@ public class TaskGroup {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
