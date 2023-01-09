@@ -5,13 +5,10 @@ import com.github.bkwak.todoapp.model.TaskGroupRepository;
 import com.github.bkwak.todoapp.model.TaskRepository;
 import com.github.bkwak.todoapp.model.projection.GroupReadModel;
 import com.github.bkwak.todoapp.model.projection.GroupWriteModel;
-import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.stream.Collectors;
 import java.util.List;
-@Service
-@RequestScope
+
 public class TaskGroupService {
     private TaskGroupRepository repository;
     private TaskRepository taskRepository;
