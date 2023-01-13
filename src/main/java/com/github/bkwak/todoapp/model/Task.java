@@ -22,12 +22,21 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "task_group_id")
     private TaskGroup group;
+
     public Task() {
     }
 
     public Task(String description, LocalDateTime deadline){
+        this(description,deadline, null);
+
+    }
+
+    public Task(String description, LocalDateTime deadline, TaskGroup group){
         this.description = description;
         this.deadline = deadline;
+        if(group != null){
+            this.group = group;
+        }
     }
 
     public int getId() {
@@ -65,7 +74,6 @@ public class Task {
     public void setGroup(TaskGroup group) {
         this.group = group;
     }
-
 
     public void updateFrom(final Task source){
         description = source.description;
