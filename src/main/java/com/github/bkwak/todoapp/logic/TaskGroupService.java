@@ -5,6 +5,8 @@ import com.github.bkwak.todoapp.model.TaskGroupRepository;
 import com.github.bkwak.todoapp.model.TaskRepository;
 import com.github.bkwak.todoapp.model.projection.GroupReadModel;
 import com.github.bkwak.todoapp.model.projection.GroupWriteModel;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -37,5 +39,15 @@ public class TaskGroupService {
                 .orElseThrow(() -> new IllegalArgumentException("Task group with given id not found"));
         result.setDone(!result.isDone());
         repository.save(result);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    ResponseEntity<String> handleIllegalArgument(IllegalArgumentException e){
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    ResponseEntity<String> handleIllegalState(IllegalStateException e){
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
 }

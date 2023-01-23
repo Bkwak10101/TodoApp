@@ -6,8 +6,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-#      naming:
-#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
   datasource:
     url: 'jdbc:h2:./todo-db'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

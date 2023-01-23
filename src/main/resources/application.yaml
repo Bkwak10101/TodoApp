@@ -4,4 +4,7 @@ spring:
   main:
     banner-mode: off
 task.template.allowMultipleTasks: false
-
+management:
+  endpoints:
+    web:
+      base-path: /status
