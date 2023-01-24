@@ -1,5 +1,6 @@
 package com.github.bkwak.todoapp.logic;
 
+import com.github.bkwak.todoapp.model.Project;
 import com.github.bkwak.todoapp.model.TaskGroup;
 import com.github.bkwak.todoapp.model.TaskGroupRepository;
 import com.github.bkwak.todoapp.model.TaskRepository;
@@ -21,7 +22,11 @@ public class TaskGroupService {
     }
 
     public GroupReadModel createGroup(GroupWriteModel source){
-        TaskGroup result = repository.save(source.toGroup());
+        return createGroup(source, null);
+    }
+
+    GroupReadModel createGroup(final GroupWriteModel source, final Project project) {
+        TaskGroup result = repository.save(source.toGroup(project));
         return new GroupReadModel(result);
     }
 
