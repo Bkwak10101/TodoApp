@@ -9,6 +9,7 @@ import com.github.bkwak.todoapp.model.Task;
 import com.github.bkwak.todoapp.model.projection.GroupReadModel;
 import com.github.bkwak.todoapp.model.projection.GroupTaskWriteModel;
 import com.github.bkwak.todoapp.model.projection.GroupWriteModel;
+import com.github.bkwak.todoapp.model.projection.ProjectWriteModel;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,8 +32,8 @@ public class ProjectService {
         return repository.findAll();
     }
 
-    public Project save(final Project toSave) {
-        return repository.save(toSave);
+    public Project save(final ProjectWriteModel toSave) {
+        return repository.save(toSave.toProject());
     }
 
     public GroupReadModel createGroup(LocalDateTime deadline, int projectId) {
