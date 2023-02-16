@@ -8,13 +8,15 @@ import com.github.bkwak.todoapp.model.projection.GroupWriteModel;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/groups")
 public class TaskGroupController {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(TaskGroupController.class);
@@ -26,17 +28,20 @@ public class TaskGroupController {
         this.repository = repository;
     }
 
+    @ResponseBody
     @PostMapping()
     ResponseEntity<GroupReadModel> createGroup(@RequestBody @Valid GroupWriteModel toCreate) {
         GroupReadModel result = service.createGroup(toCreate);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
 
+    @ResponseBody
     @GetMapping()
     ResponseEntity<List<GroupReadModel>> readAllGroups() {
         return ResponseEntity.ok(service.readAll());
     }
 
+    @ResponseBody
     @GetMapping("/{id}")
     ResponseEntity<List<Task>> readAllTasksFromGroup(@PathVariable int id) {
         return ResponseEntity.ok(repository.findAllByGroup_Id(id));
