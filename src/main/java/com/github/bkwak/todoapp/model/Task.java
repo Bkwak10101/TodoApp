@@ -2,7 +2,6 @@ package com.github.bkwak.todoapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +12,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank(message = "Task's description must not be empty")
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
     private boolean done;
     private LocalDateTime deadline;
@@ -26,15 +25,15 @@ public class Task {
     public Task() {
     }
 
-    public Task(String description, LocalDateTime deadline){
-        this(description,deadline, null);
+    public Task(String description, LocalDateTime deadline) {
+        this(description, deadline, null);
 
     }
 
-    public Task(String description, LocalDateTime deadline, TaskGroup group){
+    public Task(String description, LocalDateTime deadline, TaskGroup group) {
         this.description = description;
         this.deadline = deadline;
-        if(group != null){
+        if (group != null) {
             this.group = group;
         }
     }
@@ -75,7 +74,7 @@ public class Task {
         this.group = group;
     }
 
-    public void updateFrom(final Task source){
+    public void updateFrom(final Task source) {
         description = source.description;
         done = source.done;
         deadline = source.deadline;

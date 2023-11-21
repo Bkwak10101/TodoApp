@@ -11,10 +11,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.catchThrowable;
-
 import static org.assertj.core.api.Assertions.assertThat;
-
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -70,7 +68,7 @@ class ProjectServiceTest {
         // and
         TaskConfigurationProperties mockConfig = configurationReturning(true);
         // system under test
-        var toTest = new ProjectService(mockRepository, mockGroupRepository,null, mockConfig);
+        var toTest = new ProjectService(mockRepository, mockGroupRepository, null, mockConfig);
         // when
         var exception = catchThrowable(() -> toTest.createGroup(LocalDateTime.now(), 0));
 
@@ -83,7 +81,7 @@ class ProjectServiceTest {
 
     @Test
     @DisplayName("should create a new group from project")
-    public void createGroup_configurationOk_existingProject_createsAndSavesGroup(){
+    public void createGroup_configurationOk_existingProject_createsAndSavesGroup() {
         // given
         var today = LocalDate.now().atStartOfDay();
         // and
@@ -112,7 +110,7 @@ class ProjectServiceTest {
         return new TaskGroupService(inMemoryGroup, null);
     }
 
-    private Project projectWith(String projectDescription, Set<Integer> daysToDeadline){
+    private Project projectWith(String projectDescription, Set<Integer> daysToDeadline) {
         Set<ProjectStep> steps = daysToDeadline.stream()
                 .map(days -> {
                     var step = mock(ProjectStep.class);
@@ -127,15 +125,15 @@ class ProjectServiceTest {
         return result;
     }
 
-    private inMemoryGroupRepository inMemoryGroupRepository(){
+    private inMemoryGroupRepository inMemoryGroupRepository() {
         return new inMemoryGroupRepository();
     }
 
-    private static class inMemoryGroupRepository implements TaskGroupRepository{
+    private static class inMemoryGroupRepository implements TaskGroupRepository {
         private int index = 0;
         private Map<Integer, TaskGroup> map = new HashMap<>();
 
-        public int count(){
+        public int count() {
             return map.values().size();
         }
 
@@ -151,7 +149,7 @@ class ProjectServiceTest {
 
         @Override
         public TaskGroup save(TaskGroup entity) {
-            if(entity.getId() == 0){
+            if (entity.getId() == 0) {
                 try {
                     var field = TaskGroup.class.getDeclaredField("id");
                     field.setAccessible(true);
@@ -170,7 +168,9 @@ class ProjectServiceTest {
                     .filter(group -> !group.isDone())
                     .anyMatch(group -> group.getProject() != null && group.getProject().getId() == projectId);
         }
-    };
+    }
+
+    ;
 
     private TaskGroupRepository groupRepositoryReturning(final boolean result) {
         var mockGroupRepository = mock(TaskGroupRepository.class);

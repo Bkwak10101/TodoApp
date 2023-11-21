@@ -11,8 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @ActiveProfiles("integration")
@@ -22,6 +22,7 @@ public class TaskControllerIntegrationTest {
     private MockMvc mockMvc;
     @Autowired
     private TaskRepository repo;
+
     @Test
     void httpGet_returnsGivenTask() throws Exception {
         // given

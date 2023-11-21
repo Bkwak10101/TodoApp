@@ -19,8 +19,8 @@ public class TestConfiguration {
     @Bean
     @Primary
     @Profile("!integration")
-    DataSource e2eTestDataSource(){
-        var result = new DriverManagerDataSource("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "sa","");
+    DataSource e2eTestDataSource() {
+        var result = new DriverManagerDataSource("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "sa", "");
         result.setDriverClassName("org.h2.Driver");
         return result;
     }
@@ -28,7 +28,7 @@ public class TestConfiguration {
     @Bean
     @Primary
     @Profile("integration")
-    TaskRepository testRepo(){
+    TaskRepository testRepo() {
         return new TaskRepository() {
             private Map<Integer, Task> tasks = new HashMap<>();
 

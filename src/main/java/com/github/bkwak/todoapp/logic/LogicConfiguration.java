@@ -24,6 +24,6 @@ class LogicConfiguration {
             final TaskGroupRepository repository,
             final TaskRepository taskRepository
     ) {
-        return new TaskGroupService(repository,taskRepository);
+        return new TaskGroupService(repository, taskRepository);
     }
 }

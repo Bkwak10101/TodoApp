@@ -4,8 +4,6 @@ package com.github.bkwak.todoapp.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,7 +13,7 @@ public class TaskGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank(message = "Task group's description must not be empty")
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
     private boolean done;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "group")

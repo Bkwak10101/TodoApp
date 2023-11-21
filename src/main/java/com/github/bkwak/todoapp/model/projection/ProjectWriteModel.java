@@ -15,7 +15,7 @@ public class ProjectWriteModel {
     @Valid
     private List<ProjectStep> steps = new ArrayList<>();
 
-    public ProjectWriteModel(){
+    public ProjectWriteModel() {
         steps.add(new ProjectStep());
     }
 
@@ -35,7 +35,7 @@ public class ProjectWriteModel {
         this.steps = steps;
     }
 
-    public Project toProject(){
+    public Project toProject() {
         var result = new Project();
         result.setDescription(description);
         steps.forEach(step -> step.setProject(result));

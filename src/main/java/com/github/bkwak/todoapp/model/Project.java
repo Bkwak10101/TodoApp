@@ -12,11 +12,11 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank(message = "Project's description must not be empty")
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
     private Set<TaskGroup> groups;
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "project")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "project")
     private Set<ProjectStep> steps;
 
     public Project() {
@@ -46,11 +46,11 @@ public class Project {
         this.groups = groups;
     }
 
-    public Set<ProjectStep> getSteps(){
+    public Set<ProjectStep> getSteps() {
         return steps;
     }
 
-    public void setSteps(final Set<ProjectStep> steps){
+    public void setSteps(final Set<ProjectStep> steps) {
         this.steps = steps;
     }
 }

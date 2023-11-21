@@ -4,7 +4,6 @@ import com.github.bkwak.todoapp.model.Task;
 import com.github.bkwak.todoapp.model.TaskRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/tasks")
@@ -44,7 +42,7 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Task> readTask(@PathVariable int id){
+    ResponseEntity<Task> readTask(@PathVariable int id) {
         logger.info("Reading task with id = " + id);
         return repository.findById(id)
                 .map(task -> ResponseEntity.ok(task))
@@ -52,15 +50,15 @@ public class TaskController {
     }
 
     @GetMapping("/search/done")
-    ResponseEntity<List<Task>> readDoneTasks(@RequestParam(defaultValue = "true") boolean state){
+    ResponseEntity<List<Task>> readDoneTasks(@RequestParam(defaultValue = "true") boolean state) {
         return ResponseEntity.ok(
                 repository.findByDone(state)
         );
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<?> updateTask(@PathVariable int id, @RequestBody @Valid Task toUpdate){
-        if(!repository.existsById(id)){
+    ResponseEntity<?> updateTask(@PathVariable int id, @RequestBody @Valid Task toUpdate) {
+        if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
         repository.findById(id)
@@ -73,8 +71,8 @@ public class TaskController {
 
     @Transactional
     @PatchMapping("/{id}")
-    public ResponseEntity<?> toggleTask(@PathVariable int id){
-        if(!repository.existsById(id)){
+    public ResponseEntity<?> toggleTask(@PathVariable int id) {
+        if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
         repository.findById(id)

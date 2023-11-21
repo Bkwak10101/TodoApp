@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Component
 class LoggerInterceptor implements HandlerInterceptor {
-public static final Logger logger = LoggerFactory.getLogger(LoggerInterceptor.class);
+    public static final Logger logger = LoggerFactory.getLogger(LoggerInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

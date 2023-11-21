@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import static org.assertj.core.api.Assertions.assertThat;
-
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
 class TaskGroupServiceTest {
     @Test
     @DisplayName("should throw IllegalStateException when undone tasks")
@@ -38,7 +38,7 @@ class TaskGroupServiceTest {
 
     @Test
     @DisplayName("should throw IllegalArgumentException when no group with given id")
-    void toggleGroup_wrongId_throwsIllegalArgumentException(){
+    void toggleGroup_wrongId_throwsIllegalArgumentException() {
         // given
         TaskRepository mockTaskRepository = taskRepositoryReturning(false);
         // and
@@ -57,7 +57,7 @@ class TaskGroupServiceTest {
 
     @Test
     @DisplayName("should toggle group")
-    void toggleGroup_worksAsExpected(){
+    void toggleGroup_worksAsExpected() {
         // given
         TaskRepository mockTaskRepository = taskRepositoryReturning(false);
         // and

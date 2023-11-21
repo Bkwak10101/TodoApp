@@ -1,11 +1,9 @@
 package com.github.bkwak.todoapp.logic;
 
 import com.github.bkwak.todoapp.TaskConfigurationProperties;
-import com.github.bkwak.todoapp.model.ProjectRepository;
-import com.github.bkwak.todoapp.model.TaskGroup;
-import com.github.bkwak.todoapp.model.TaskGroupRepository;
 import com.github.bkwak.todoapp.model.Project;
-import com.github.bkwak.todoapp.model.Task;
+import com.github.bkwak.todoapp.model.ProjectRepository;
+import com.github.bkwak.todoapp.model.TaskGroupRepository;
 import com.github.bkwak.todoapp.model.projection.GroupReadModel;
 import com.github.bkwak.todoapp.model.projection.GroupTaskWriteModel;
 import com.github.bkwak.todoapp.model.projection.GroupWriteModel;
@@ -16,10 +14,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProjectService {
-    private ProjectRepository repository;
-    private TaskGroupRepository taskGroupRepository;
-    private TaskGroupService taskGroupService;
-    private TaskConfigurationProperties config;
+    private final ProjectRepository repository;
+    private final TaskGroupRepository taskGroupRepository;
+    private final TaskGroupService taskGroupService;
+    private final TaskConfigurationProperties config;
 
     public ProjectService(ProjectRepository repository, TaskGroupRepository taskGroupRepository, TaskGroupService taskGroupService, TaskConfigurationProperties config) {
         this.repository = repository;

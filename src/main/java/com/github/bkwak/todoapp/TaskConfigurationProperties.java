@@ -3,7 +3,6 @@ package com.github.bkwak.todoapp;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-
 @Configuration
 @ConfigurationProperties("task")
 public class TaskConfigurationProperties {
@@ -17,8 +16,8 @@ public class TaskConfigurationProperties {
         this.template = template;
     }
 
-    public static class Template{
-    private boolean allowMultipleTasks;
+    public static class Template {
+        private boolean allowMultipleTasks;
 
         public boolean isAllowMultipleTasks() {
             return allowMultipleTasks;
@@ -28,5 +27,4 @@ public class TaskConfigurationProperties {
             this.allowMultipleTasks = allowMultipleTasks;
         }
     }
-
 }

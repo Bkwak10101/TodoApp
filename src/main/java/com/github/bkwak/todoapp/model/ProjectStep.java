@@ -16,7 +16,7 @@ public class ProjectStep {
     @JoinColumn(name = "project_id")
     private Project project;
 
-    public ProjectStep(){
+    public ProjectStep() {
     }
 
     public int getId() {

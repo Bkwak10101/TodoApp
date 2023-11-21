@@ -61,8 +61,7 @@ public class ProjectController {
         try {
             service.createGroup(deadline, id);
             model.addAttribute("message", "Group added!");
-        }
-        catch (IllegalStateException | IllegalArgumentException e){
+        } catch (IllegalStateException | IllegalArgumentException e) {
             model.addAttribute("message", "Error while creating a group");
         }
         return "projects";

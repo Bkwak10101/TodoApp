@@ -9,7 +9,6 @@ import java.util.Set;
 
 @Configuration
 class MvcConfiguration implements WebMvcConfigurer {
-
     private final Set<HandlerInterceptor> interceptors;
 
     MvcConfiguration(Set<HandlerInterceptor> interceptors) {

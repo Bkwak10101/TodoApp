@@ -11,6 +11,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TaskControllerE2ETest {
     @LocalServerPort
@@ -21,7 +22,7 @@ class TaskControllerE2ETest {
     TaskRepository repo;
 
     @Test
-    void httpGet_returnsAllTasks(){
+    void httpGet_returnsAllTasks() {
         // given
         int initial = repo.findAll().size();
         repo.save(new Task("lorem", LocalDateTime.now()));

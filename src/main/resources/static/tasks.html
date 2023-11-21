@@ -11,17 +11,17 @@
     <fieldset>
         <form>
             <label>Opis
-                <input type="text" name="description" />
+                <input type="text" name="description"/>
             </label>
             <label>Deadline
-                <input type="datetime-local" name="deadline" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" />
+                <input type="datetime-local" name="deadline" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"/>
             </label>
             <button type="submit">Dodaj!</button>
         </form>
     </fieldset>
 </main>
 <script>
-    (async function() {
+    (async function () {
         const main = document.querySelector('main');
         const params = new URLSearchParams(location.search);
         const response = params.has('group') ? await fetch(`/groups/${params.get('group')}`) : await fetch('/tasks');
@@ -52,7 +52,7 @@
             }
         });
 
-        function createTask({ id, description, deadline, done }) {
+        function createTask({id, description, deadline, done}) {
             const result = document.createElement('li');
             result.innerHTML = `
                 <label>
@@ -62,7 +62,7 @@
                 </label>
             `;
             result.querySelector('input').addEventListener('click', async (e) => {
-                const response = await fetch(`/tasks/${id}`, { method: 'PATCH' });
+                const response = await fetch(`/tasks/${id}`, {method: 'PATCH'});
                 if (!response.ok) {
                     e.target.checked = !e.target.checked;
                 }
